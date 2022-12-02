@@ -25,7 +25,7 @@ def shape_fixing(a,b):
     "C": {"X": 2, "Y": 3, "Z": 1}}
     return fix_choice[a][b]
 
-def part1(input):
+def part1(rounds):
     total_score = 0
     for round in rounds:
         them, you = round.split()
@@ -37,7 +37,7 @@ def part1(input):
 
 
 
-def part2(input):
+def part2(rounds):
     fixed_score = 0
     for round in rounds:
         them, you = round.split()
@@ -54,6 +54,6 @@ def part2(input):
 if __name__ == "__main__":
     # rounds = test_input.split("\n")
     with open("input", "r") as fh:
-        rounds = fh.read().splitlines()
-    print(part1(rounds))
-    print(part2(rounds))
+        round_input = fh.read().splitlines()
+    print(part1(round_input))
+    print(part2(round_input))
