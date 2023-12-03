@@ -16,7 +16,7 @@ with open("input.txt") as fh:
 
 matrix = dict()
 symbols = set()
-cogs = []
+gears = dict()
 for i, line in enumerate(test_input.splitlines()):
     matrix[i] = dict()
     for j, char in enumerate(line):
@@ -24,7 +24,7 @@ for i, line in enumerate(test_input.splitlines()):
         if char.isdigit() is False and char != ".":
             symbols.add(char)
         if char == "*":
-            cogs.append((i,j))
+            gears[(i,j)] = []
 
 
 def get_adjacent(matrix, i, j):
@@ -72,7 +72,6 @@ for i in matrix:
 print(sum(part1))
 
 part2 = 0
-gears = {c:[] for c in cogs}
 
 for i in matrix:
     n = len(matrix[i]) - 1 
