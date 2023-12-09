@@ -1,6 +1,4 @@
 import numpy as np 
-import operator
-from functools import reduce
 
 test_input = """0 3 6 9 12 15
 1 3 6 10 15 21
