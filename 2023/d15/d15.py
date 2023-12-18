@@ -1,3 +1,4 @@
+from collections import defaultdict
 test_input = "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7"
 
 with open("input.txt") as fh:
@@ -20,7 +21,6 @@ part2 = dict()
 for code in test_input.split(","):
     if "=" in code:
         label, focal = code.split("=")
-        box = (label, focal)
         remove = False
     else:
         label, _ = code.split("-")
@@ -30,19 +30,12 @@ for code in test_input.split(","):
         current += ord(l)
         current *= 17
         current = current % 256
-    if current not in part2:
-        part2[current] = []
-    if part2[current]:
-        labels = [x for x,y in part2[current]]
-        if label in labels:
-            position = labels.index(label)
-            del part2[current][position]
-            if remove is False:
-                part2[current].insert(position, box)
-        elif remove is False:
-            part2[current].append(box)
-    elif remove is False:
-        part2[current].append(box)
+    if remove is False:
+        part2[current][label] = int(focal)
+    else:
+        if label in part2[current]:
+            part2[current].pop(label)
+
 ans = 0
 for box, lenses in part2.items():
     if lenses is None:
