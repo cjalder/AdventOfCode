@@ -16,8 +16,7 @@ for code in test_input.split(","):
 
 print(sum(part1))
 
-import re 
-part2 = dict()
+part2 = defaultdict(dict)
 for code in test_input.split(","):
     if "=" in code:
         label, focal = code.split("=")
@@ -40,8 +39,8 @@ ans = 0
 for box, lenses in part2.items():
     if lenses is None:
         continue
-    for i, (lens, focal) in enumerate(lenses, start=1):
-        ans += (box+1) * int(focal) * i
+    for i, focal in enumerate(lenses.values(), start=1):
+        ans += (box+1) * focal * i
 
 print(ans)
 
