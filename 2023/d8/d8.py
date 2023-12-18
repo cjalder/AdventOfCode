@@ -39,6 +39,7 @@ for a in all_a:
         for i in instructions:
             location = path[location][i]
             step += 1
+    print(a,location)
     part2.append(step)
 
 print(lcm(*part2))

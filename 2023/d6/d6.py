@@ -30,4 +30,5 @@ for i in range(time+1):
     travel = i * (time - i)
     if travel > distance:
         part2 += 1
+    
 print(part2)
